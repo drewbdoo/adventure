@@ -57,17 +57,36 @@ public class Adventure {
         "Intelligence:" + skills[2] + "\n" +
         "Charisma" + skills[3]);
         Player player = new Player(name, arch, weapon, skills);
-
-        Villages village1 = new Villages(player, "Dragon's Butthole", "Tough Guy's", "Staffy's",
-                "Stabby's", "Reaper's Coast");
-
+choice(player);
+//        Player player = new Player(name, arch, weapon, skills);
+//        Taverns Dragon = new Taverns(player, "Dragon's Den Inn", "Big Al");
+//        MageGuild FireFox = new MageGuild(player, "Merlin", "FireFoxes", 34, "Evocation");
+//        FightersGuild BraveLads = new FightersGuild(player, "Gruffy McGruff", "BraveLads", 45, "broadswords");
+//        TheivesGuild NightBlades = new TheivesGuild(player, "Veronica Nightblade", "NightBlades", 13, "Poison-blades" );
+//        ReaperCoast reaperCoast = new ReaperCoast(player, Dragon, BraveLads, FireFox, NightBlades, "Reaper's Coast");
+//
+//            reaperCoast.locationChoice();
         // System.out.println("Where to first?"+ "\n");
-        village1.locationChoice();
-               
+//        village1.locationChoice();
 
        scanner.close();
 
     };
+    public static void choice(Player player){
+
+        Taverns Dragon = new Taverns(player, "Dragon's Den Inn", "Big Al");
+        MageGuild FireFox = new MageGuild(player, "Merlin", "FireFoxes", 34, "Evocation");
+        FightersGuild BraveLads = new FightersGuild(player, "Gruffy McGruff", "BraveLads", 45, "broadswords");
+        TheivesGuild NightBlades = new TheivesGuild(player, "Veronica Nightblade", "NightBlades", 13, "Poison-blades" );
+        ReaperCoast reaperCoast = new ReaperCoast(player, Dragon, BraveLads, FireFox, NightBlades, "Reaper's Coast");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Where to?");
+        String reply = scanner.nextLine();
+        if(reply.equals("1")){
+            reaperCoast.locationChoice();
+
+        }
+    }
     
     
     

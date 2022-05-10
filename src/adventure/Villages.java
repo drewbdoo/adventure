@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Villages {
     private Player player;
-    private String tavern;
+    private Taverns tavern;
     private String fGuild;
     private String mGuild;
     private String tGuild;
     private String townName;
 
-    public Villages(Player player, String tavern, String fGuild, String mGuild,
+    public Villages(Player player, Taverns tavern, String fGuild, String mGuild,
                    String tGuild, String townName){
         this.player = player;
         this.tavern = tavern;
@@ -36,6 +36,7 @@ public class Villages {
             if ((location.equalsIgnoreCase("2")) && (player.getType().equalsIgnoreCase("fighter"))) {
                 System.out.println("\n" + "Going to the " + fGuild + "\n");
                 loopVar = false;
+
                 Village.fighterGuild(player);
             } else if ((location.equalsIgnoreCase("2")) && (!(player.getType().equalsIgnoreCase("fighter")))) {
                 System.out.println("\n" + "Only fighters are allowed in the fighter's guild. Select again" + "\n");
@@ -66,6 +67,11 @@ public class Villages {
                 System.out.println("\n" + "That is not an option, idiot. Try again." + "\n");
             }
         } while (loopVar);
+
+
+        }
+    public String getTownName(){
+        return townName;
     }
 
 

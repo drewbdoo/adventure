@@ -11,4 +11,10 @@ public class Taverns {
         this.tavernName = tavernName;
         this.barKeep = barKeep;
     }
+    public String getTavernName(){
+        return tavernName;
+    }
+    public String getBarKeep(){
+        return barKeep;
+    }
 }
