@@ -1,6 +1,6 @@
 package adventure;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class Adventure {
 
@@ -57,7 +57,7 @@ public class Adventure {
         "Intelligence:" + skills[2] + "\n" +
         "Charisma" + skills[3]);
         Player player = new Player(name, arch, weapon, skills);
-choice(player);
+        choice(player);
 //        Player player = new Player(name, arch, weapon, skills);
 //        Taverns Dragon = new Taverns(player, "Dragon's Den Inn", "Big Al");
 //        MageGuild FireFox = new MageGuild(player, "Merlin", "FireFoxes", 34, "Evocation");
@@ -79,12 +79,17 @@ choice(player);
         FightersGuild BraveLads = new FightersGuild(player, "Gruffy McGruff", "BraveLads", 45, "broadswords");
         TheivesGuild NightBlades = new TheivesGuild(player, "Veronica Nightblade", "NightBlades", 13, "Poison-blades" );
         ReaperCoast reaperCoast = new ReaperCoast(player, Dragon, BraveLads, FireFox, NightBlades, "Reaper's Coast");
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Where to?");
-        String reply = scanner.nextLine();
-        if(reply.equals("1")){
+        JDialog.setDefaultLookAndFeelDecorated(true);
+        Object[] selectionValues = {"Reaper's Coast", "Haven's Roost"};
+        String initialSelection = "Reaper's Coast";
+        Object selection = JOptionPane.showInputDialog(null, player.getName() + ", now that you have your gear and your skills, it's time to embark!" + "\n" +"\n"
+                        + "Where would you like to go first?" + "\n",
+                "Where to?", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
+        String reply = (String.valueOf(selection));
+        if(selection.equals("Reaper's Coast")){
             reaperCoast.locationChoice();
-
+        }else{
+            JOptionPane.showMessageDialog(null, "Sorry, we aren't done building that yet!");
         }
     }
     
