@@ -1,6 +1,7 @@
 package adventure;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Village {
     private Player player;
@@ -13,40 +14,46 @@ public class Village {
         Scanner scanner = new Scanner(System.in);
         Boolean loopVar = true;
         do {
-            System.out.println(
-                "\n" + "For the Dragon's Breath Inn select 1,");
-            System.out.println("For the Fighter's Guild, Select 2,");
-            System.out.println("For the Wizard's Butt Library, Select 3");
-            System.out.println("For the Thieves Guild, Select 4");
-            System.out.println("To camp for the evening, Select 5");
-            System.out.println("To check your player stats, Select 6"+ "\n");
-            String location = scanner.nextLine();
-
-            if ((location.equalsIgnoreCase("2")) && (player.getType().equalsIgnoreCase("fighter"))) {
+            String location = JOptionPane.showInputDialog(null, "Where to next?" + "\n" + 
+            "For the Dragon's Breath Inn select 1," + "\n" +
+            "For the Fighter's Guild, Select 2," + "\n" +
+            "For the Wizard's Butt Library, Select 3" + "\n" +
+            "For the Thieves Guild, Select 4" + "\n" +
+            "To camp for the evening, Select 5" + "\n" +
+            "To check your player stats, Select 6" + "\n");
+             if ((location.equalsIgnoreCase("2")) && (player.getType().equalsIgnoreCase("fighter"))) {
+                
                 System.out.println("\n" + "Going to the fighter's guild" + "\n");
                 loopVar = false;
                 Village.fighterGuild(player);
             } else if ((location.equalsIgnoreCase("2")) && (!(player.getType().equalsIgnoreCase("fighter")))) {
+                
                 System.out.println("\n" + "Only fighters are allowed in the fighter's guild. Select again" + "\n");
             } else if (location.equalsIgnoreCase("1")) {
+                
                 System.out.println("\n" + "Going to the inn" + "\n");
                 loopVar = false;
                 Village.theInn(player);
             } else if (location.equalsIgnoreCase("3")) {
+                
                 System.out.println("\n" + "Going to the library" + "\n");
                 loopVar = false;
                 Village.library(player);
             } else if (location.equalsIgnoreCase("4") && (!player.getType().equalsIgnoreCase("rogue"))) {
+                
                 System.out.println("\n" + "Only rogues are allowed in the Thieves Guild" + "\n");
             } else if (location.equalsIgnoreCase("4")) {
+                
                 System.out.println("\n" + "Going to the town hall" + "\n");
                 loopVar = false;
                 Village.thievesGuild(player);
             } else if (location.equalsIgnoreCase("5")) {
+                
                 System.out.println("\n" + "You camp out in the woods for the evening" + "\n");
                 System.out.println("Thanks for playing Adventure");
                 System.exit(0);
             } else if(location.equalsIgnoreCase("6")){
+                
                 System.out.println("\n" + "Your current Strength is" + player.skills[0]);
                 System.out.println("Your current Dexterity is" + player.skills[1]);
                 System.out.println("Your current Intelligence is" + player.skills[2]);
@@ -58,6 +65,52 @@ public class Village {
         } while (loopVar);
         scanner.close();
     }
+    //     do {
+    //         System.out.println(
+    //             "\n" + "For the Dragon's Breath Inn select 1,");
+    //         System.out.println("For the Fighter's Guild, Select 2,");
+    //         System.out.println("For the Wizard's Butt Library, Select 3");
+    //         System.out.println("For the Thieves Guild, Select 4");
+    //         System.out.println("To camp for the evening, Select 5");
+    //         System.out.println("To check your player stats, Select 6"+ "\n");
+    //         String location = scanner.nextLine();
+
+    //         if ((location.equalsIgnoreCase("2")) && (player.getType().equalsIgnoreCase("fighter"))) {
+    //             System.out.println("\n" + "Going to the fighter's guild" + "\n");
+    //             loopVar = false;
+    //             Village.fighterGuild(player);
+    //         } else if ((location.equalsIgnoreCase("2")) && (!(player.getType().equalsIgnoreCase("fighter")))) {
+    //             System.out.println("\n" + "Only fighters are allowed in the fighter's guild. Select again" + "\n");
+    //         } else if (location.equalsIgnoreCase("1")) {
+    //             System.out.println("\n" + "Going to the inn" + "\n");
+    //             loopVar = false;
+    //             Village.theInn(player);
+    //         } else if (location.equalsIgnoreCase("3")) {
+    //             System.out.println("\n" + "Going to the library" + "\n");
+    //             loopVar = false;
+    //             Village.library(player);
+    //         } else if (location.equalsIgnoreCase("4") && (!player.getType().equalsIgnoreCase("rogue"))) {
+    //             System.out.println("\n" + "Only rogues are allowed in the Thieves Guild" + "\n");
+    //         } else if (location.equalsIgnoreCase("4")) {
+    //             System.out.println("\n" + "Going to the town hall" + "\n");
+    //             loopVar = false;
+    //             Village.thievesGuild(player);
+    //         } else if (location.equalsIgnoreCase("5")) {
+    //             System.out.println("\n" + "You camp out in the woods for the evening" + "\n");
+    //             System.out.println("Thanks for playing Adventure");
+    //             System.exit(0);
+    //         } else if(location.equalsIgnoreCase("6")){
+    //             System.out.println("\n" + "Your current Strength is" + player.skills[0]);
+    //             System.out.println("Your current Dexterity is" + player.skills[1]);
+    //             System.out.println("Your current Intelligence is" + player.skills[2]);
+    //             System.out.println("Your current Charisma is" + player.skills[3]);
+            
+    //         } else {
+    //             System.out.println("\n" + "That is not an option, idiot. Try again." + "\n");
+    //         }
+    //     } while (loopVar);
+    //     scanner.close();
+    // }
 
     public static void theInn(Player player) {
         Scanner scanner = new Scanner(System.in);
@@ -75,7 +128,7 @@ public class Village {
     public static void fighterGuild(Player player) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n" + "You walk into the Fighter's Guild.");
-        System.out.println("\n" + "Numberous weapons of all size and shape line the walls.");
+        System.out.println("\n" + "Numerous weapons of all size and shape line the walls.");
         System.out.println(
             "\n" + "A stout and stern looking Orc sits sharpinging his blade and looks up as you walk through the door"
                         + "\n");

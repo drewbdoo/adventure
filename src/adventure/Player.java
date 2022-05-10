@@ -28,6 +28,15 @@ public class Player {
     public String getWeapon() {
         return weapon;
     }
+    public int getWeaponDmg(){
+        if(weapon.equals("sword")){
+            return(6);
+        }else if(weapon.equals("dagger")){
+            return(4);
+        }else{
+            return(2);
+        }
+    }
 
     public void increaseStr() {
         skills[0]++;

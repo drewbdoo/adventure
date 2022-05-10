@@ -1,21 +1,19 @@
 package adventure;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Adventure {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\n" + "Welcome to the world of Adventure!" + "\n");
-        System.out.println("What would you like to be called, traveler?");
-        String name = scanner.nextLine();
-        System.out.println("\n" + "Would you like to go on an adventure " + name + "?");
-        String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("yes")) {
-            System.out.println("Sweet!!!" + "\n");
-        } else {
-            System.out.println("Well fuck off then!!!");
-            System.exit(0);
+        String name = JOptionPane.showInputDialog("Welcome to the world of Adventure" + "\n" + "What would you like to be called?");
+        String answer = JOptionPane.showInputDialog("Would you like to go on an adventure " + name + "?");
+         if (answer.equalsIgnoreCase("yes")) {
+            JOptionPane.showMessageDialog(null, "Sweet!");
+            } else {
+            JOptionPane.showMessageDialog(null, "Well fuck off then!!!" );
+             System.exit(0);
         }
         String weapon;
         String arch;
@@ -24,21 +22,22 @@ public class Adventure {
         //Skills [1] = Dexterity
         //Skills [2] = Intelligence
         //Skills [3] = Charisma
-     
-        System.out.println("Would you like to be a fighter, mage, or rogue?");
-        String type = scanner.nextLine();
+
+        String type = JOptionPane.showInputDialog("Would you like to be a fighter, a mage, or a rogue?");
+        // System.out.println("Would you like to be a fighter, mage, or rogue?");
+        // String type = scanner.nextLine();
         if (type.equalsIgnoreCase("fighter")) {
             weapon = "sword";
             arch = "Fighter";
             skills[0] = 5; //Str
-            skills[1] = 3; //Dex
+            skills[1] = 4; //Dex
             skills[2] = 1; //Int
-            skills[3] = 2; //Cha
+            skills[3] = 2; //Cha 
 
         } else if (type.equalsIgnoreCase("mage")) {
             weapon = "staff";
             arch = "Mage";
-            skills[0] = 1; //Str
+            skills[0] = 2; //Str
             skills[1] = 3; //Dex
             skills[2] = 5; //Int
             skills[3] = 3; //Cha
@@ -47,20 +46,23 @@ public class Adventure {
             weapon = "dagger";
             arch = "Rogue";
             skills[0] = 2; //Str
-            skills[1] = 5; //Dex
-            skills[2] = 3; //Int
+            skills[1] = 4; //Dex
+            skills[2] = 2; //Int
             skills[3] = 4; //Cha
         }
-        System.out.println("\n" + "Splendid! You are now a " + arch + " and your chosen weapon is a " + weapon+ "\n");
-        System.out.println("You starting stats are:" + "\n");
-        System.out.println("Strength:" + skills[0]);
-        System.out.println("Dexterity:" + skills[1]);
-        System.out.println("Intelligence:" + skills[2]);
-        System.out.println("Charisma:" + skills[3]+ "\n");
+        JOptionPane.showMessageDialog(null, "Splendid!" + "\n" + "You are now a " + arch + " and your chosen weapon is a " + weapon);
+        JOptionPane.showMessageDialog(null, "Your starting stats are:" + "\n" + 
+        "Strength:" + skills[0] + "\n" + 
+        "Dexterity:" + skills[1] + "\n" +
+        "Intelligence:" + skills[2] + "\n" +
+        "Charisma" + skills[3]);
         Player player = new Player(name, arch, weapon, skills);
 
-        System.out.println("Where to first?"+ "\n");
-        Village.locationChoice(player);
+        Villages village1 = new Villages(player, "Dragon's Butthole", "Tough Guy's", "Staffy's",
+                "Stabby's", "Reaper's Coast");
+
+        // System.out.println("Where to first?"+ "\n");
+        village1.locationChoice();
                
 
        scanner.close();
